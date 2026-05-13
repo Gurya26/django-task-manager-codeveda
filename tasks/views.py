@@ -8,21 +8,31 @@ from .models import Task
 @login_required
 def home(request):
 
+    search = request.GET.get('search')
+
     if request.method == 'POST':
 
         title = request.POST.get('title')
+        priority = request.POST.get('priority')
+        due_date = request.POST.get('due_date')
 
         if title:
+
             Task.objects.create(
                 user=request.user,
-                title=title
+                title=title,
+                priority=priority,
+                due_date=due_date
             )
 
         return redirect('home')
 
-    tasks = Task.objects.filter(
-        user=request.user
-    ).order_by('-created_at')
+    tasks = Task.objects.filter(user=request.user)
+
+    if search:
+        tasks = tasks.filter(title__icontains=search)
+
+    tasks = tasks.order_by('-created_at')
 
     return render(
         request,
@@ -73,11 +83,11 @@ def edit_task(request, task_id):
 
     if request.method == 'POST':
 
-        title = request.POST.get('title')
+        task.title = request.POST.get('title')
+        task.priority = request.POST.get('priority')
+        task.due_date = request.POST.get('due_date')
 
-        if title:
-            task.title = title
-            task.save()
+        task.save()
 
         return redirect('home')
 
@@ -90,7 +100,7 @@ def edit_task(request, task_id):
     )
 
 
-def signup(request):
+def signup_view(request):
 
     if request.method == 'POST':
 

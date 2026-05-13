@@ -24,8 +24,8 @@ urlpatterns = [
     ),
 
     path(
-        'signup/',
-        views.signup,
-        name='signup'
-    ),
+    'signup/',
+    views.signup_view,
+    name='signup'
+),
 ]

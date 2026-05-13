@@ -1,117 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Django Task Manager</title>
 
-<meta charset="UTF-8">
+    <style>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
-<title>Login</title>
+        body{
+            background:#000;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
 
-<style>
+        .container{
+            width:100%;
+            max-width:600px;
+            background:#1e1e1e;
+            padding:40px;
+            border-radius:25px;
+            color:white;
+            box-shadow:0 0 25px rgba(255,255,255,0.1);
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
-}
+        h1{
+            text-align:center;
+            font-size:70px;
+            margin-bottom:30px;
+        }
 
-body{
-    background:#121212;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
+        label{
+            display:block;
+            margin-bottom:10px;
+            font-size:20px;
+        }
 
-.container{
-    background:#1e1e1e;
-    width:500px;
-    padding:40px;
-    border-radius:25px;
-    text-align:center;
-}
+        input{
+            width:100%;
+            padding:18px;
+            margin-bottom:25px;
+            border:none;
+            border-radius:15px;
+            font-size:20px;
+            outline:none;
+        }
 
-h1{
-    color:white;
-    font-size:70px;
-    margin-bottom:30px;
-}
+        button{
+            width:100%;
+            padding:18px;
+            border:none;
+            border-radius:15px;
+            background:#333;
+            color:white;
+            font-size:22px;
+            cursor:pointer;
+            transition:0.3s;
+        }
 
-label{
-    color:white;
-    font-size:20px;
-}
+        button:hover{
+            background:#ff2d6f;
+        }
 
-input{
-    width:100%;
-    padding:18px;
-    margin-top:10px;
-    margin-bottom:25px;
-    border:none;
-    border-radius:15px;
-    font-size:22px;
-}
+        .signup-link{
+            text-align:center;
+            margin-top:25px;
+            font-size:18px;
+        }
 
-button{
-    width:100%;
-    padding:18px;
-    background:#333;
-    color:white;
-    border:none;
-    border-radius:15px;
-    font-size:25px;
-    cursor:pointer;
-}
+        .signup-link a{
+            color:#00d9ff;
+            text-decoration:none;
+        }
 
-.signup-link{
-    display:block;
-    margin-top:25px;
-    color:#00bfff;
-    text-decoration:none;
-    font-size:20px;
-}
+        .forgot-password{
+            text-align:right;
+            margin-bottom:20px;
+        }
 
-.errorlist{
-    color:#ff3366;
-    list-style:none;
-    margin-bottom:15px;
-}
+        .forgot-password a{
+            color:#00d9ff;
+            text-decoration:none;
+            font-size:16px;
+        }
 
-</style>
+        .forgot-password a:hover{
+            text-decoration:underline;
+        }
+
+        @media(max-width:600px){
+
+            .container{
+                padding:25px;
+            }
+
+            h1{
+                font-size:50px;
+            }
+
+            input,
+            button{
+                font-size:18px;
+                padding:15px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h1>🔐 Login</h1>
+        <h1>🔐 Login</h1>
 
-<form method="POST">
+        <form method="POST">
 
-{% csrf_token %}
+            {% csrf_token %}
 
-{{ form.as_p }}
+            {{ form.as_p }}
 
-<button type="submit">
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
 
-Login
+            <button type="submit">Login</button>
 
-</button>
+        </form>
 
-</form>
+        <div class="signup-link">
+            Don’t have an account?
+            <a href="{% url 'signup' %}">Signup</a>
+        </div>
 
-<a href="/signup/" class="signup-link">
-
-Don't have an account? Signup
-
-</a>
-
-</div>
+    </div>
 
 </body>
-
 </html>
