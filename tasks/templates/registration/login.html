@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#121212;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#1e1e1e;
+    width:500px;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+}
+
+h1{
+    color:white;
+    font-size:70px;
+    margin-bottom:30px;
+}
+
+label{
+    color:white;
+    font-size:20px;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    margin-top:10px;
+    margin-bottom:25px;
+    border:none;
+    border-radius:15px;
+    font-size:22px;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    background:#333;
+    color:white;
+    border:none;
+    border-radius:15px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.signup-link{
+    display:block;
+    margin-top:25px;
+    color:#00bfff;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.errorlist{
+    color:#ff3366;
+    list-style:none;
+    margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔐 Login</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+
+Login
+
+</button>
+
+</form>
+
+<a href="/signup/" class="signup-link">
+
+Don't have an account? Signup
+
+</a>
+
+</div>
+
+</body>
+
+</html>

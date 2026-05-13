@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signup</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#121212;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    background:#1e1e1e;
+    width:500px;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+}
+
+h1{
+    color:white;
+    font-size:60px;
+    margin-bottom:30px;
+}
+
+label{
+    color:white;
+    font-size:20px;
+    display:block;
+    margin-bottom:10px;
+    text-align:left;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:15px;
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    background:#ff3366;
+    color:white;
+    border:none;
+    border-radius:15px;
+    font-size:24px;
+    cursor:pointer;
+}
+
+a{
+    color:#00bfff;
+    text-decoration:none;
+    font-size:18px;
+}
+
+.helptext{
+    display:none;
+}
+
+ul{
+    display:none;
+}
+
+.errorlist{
+    color:#ff3366;
+    list-style:none;
+    margin-bottom:20px;
+    text-align:left;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚀 Signup</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+
+Create Account
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/login/">
+
+Already have account?
+
+</a>
+
+</div>
+
+</body>
+
+</html>
